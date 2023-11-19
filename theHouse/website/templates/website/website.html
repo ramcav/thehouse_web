@@ -1,69 +1,212 @@
 {% load static %}
 
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Landing Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>theHouse</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap');
 
         @font-face {
             font-family: 'CustomFont';
-            src: url('{% static "fonts/theHouse_font.otf" %}) format('otf'),
+            src: url('{% static "fonts/theHouse_font.woff2" %}') format('woff2'),
+            url('{% static "fonts/theHouse_font.woff" %}') format('woff'),
+            url('{% static "fonts/theHouse_font.otf" %}') format('opentype');
             font-weight: normal;
             font-style: normal;
+            
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
         
+
         body {
-            margin: 0;
-            padding: 0;
-            background-color: #000;
-            color: white;
+            background-color: #0F0F0F;
+            padding-left: 20px; /* Adjust the value as needed */
+        }
+
+        h1 {
             font-family: 'Work Sans', sans-serif;
+            font-size: 4vw;
+            color: #F6FDF3;
+            text-align: left;
+            margin-top: 50px;
         }
-        
-        .container {
-            text-align: center;
-            padding: 50px;
-        }
-        
-        .headline {
-            font-size: 48px;
-            color: red;
-        }
-        
-        .email-input {
-            margin: 20px 0;
+
+        h1 .red-text {
+            font-family: 'CustomFont', sans-serif;
+            font-size: 4.5vw;
+            color: #9B0000;
+            display: inline;
             padding: 10px;
-            width: 300px;
+            animation: fadeIn 1s;
+            position: relative;
+            z-index: 10;
+            
+        }
+
+        p {
+            font-family: 'Inter', sans-serif;
+            font-size: 1vw;
+            color: #F6FDF3;
+            text-align: left;
+            margin-top: 10px;
+        }
+
+        .icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
         }
         
-        .footer {
-            position: absolute;
-            bottom: 10px;
+        .icons img {
             width: 100%;
-            text-align: center;
-            font-size: 12px;
+            max-width: 25px;
+            margin: 0 10px;
+        }
+
+        .icons img:hover {
+            opacity: 0.5;
+        }
+
+        input[type=email], input[type=text] {
+            max-width: 300px;
+            width: 80%;
+            height: 40px;
+            border-radius: 10px;
+            border: 1px solid #F6FDF3;
+            background-color: #0F0F0F;
+            padding-left: 30px;
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            color: #F6FDF3; 
+            margin-top: 20px;
+            outline: none;
+            box-shadow: 2px 2px 4px rgba(246, 253, 243, 0.5); 
         }
         
-        .footer a {
-            color: white;
-            text-decoration: none;
+        input[type=email]::placeholder, input[type=text]::placeholder {
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            opacity: 1;
         }
+
+        input[type=submit] {
+            max-width: 130px;
+            width: 80%;
+            height: 40px;
+            border-radius: 10px;
+            border: none;
+            background-color: #9B0000;
+            color: #F6FDF3;
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            margin-top: 20px;
+            display: inline;
+            box-shadow: 2px 2px 4px rgba(155, 0, 0, 0.5)
+        }
+
+        input[type=submit]:hover {
+            opacity: 0.5;
+        }
+
+        .form-input {
+            display: flex;
+            flex-direction: column;
+            align-items: left;
+            justify-content: left;
+        }
+
+        .copyright {
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            color: #F6FDF3;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .bottom {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+        }
+
+        .middle {
+            padding-top: 50px;
+        }
+
+        input[type=email]:focus {
+            font-size: 15px;
+        }
+
+        .logo img {
+            width: 60vw;
+            position: fixed;
+            bottom: 15%;
+            left: 60%;
+        }
+
     </style>
+
 </head>
-<body>
-    <div class="container">
-        <h1 class="headline">I FOLLOWED THE HOUSE AND IT TOOK ME TO LOVE</h1>
-        <p>don't be late to the party, join the waitlist</p>
-        <input type="email" class="email-input" placeholder="enter your email...">
+<body style="background-color: #0F0F0F;">
+    <h1>I FOLLOWED<br>theHouse<br>AND IT TOOK ME<br> TO<span class="red-text">FREEDOM</span></h1>
+    
+    <div class="middle">
+        <p>don't miss the party, join the waitlist now<p>
+            <form action="{% url 'theHouse:waitlist' %}" method="post">
+                {% csrf_token %}
+                <div class = "form-input">
+                    <input size="15" type="text" name="name" placeholder="your first name...">
+                    <input size="15" type="email" name="email" placeholder="and your email...">
+                    <input type="submit" value="join the waitlist">
+                </div>
     </div>
-    <div class="footer">
-        <a href="https://instagram.com" target="_blank">Instagram</a> | 
-        <a href="mailto:contact@followthehouse.com">Email</a>
-        <p>followthehouse.com</p>
+    
+    </form>
+    <div class="bottom"> 
+        <div class = "icons">
+            <a href="https://www.instagram.com/thehouse_ls/"><img src="{% static 'icons/instagram.png' %}" width="25"></a>
+            <a href="https://www.followthehouse.com"><img src="{% static 'icons/appstore.png'%}" width="25"></a>
+            <a href="https://www.followthehouse.com"><img src="{% static 'icons/gmail.png'%}" width="25"></a>
+        </div>
+        <p class = "copyright">© 2023 theHouse. All rights reserved.</p>
+    </div>
+    
+    <div class="logo">
+        <img src="{% static 'logo/logo.png' %}" width = "100">
     </div>
 </body>
 </html>
+
+<script>
+    const words = ["THE BEST F*$CKING NIGHT OF MY LIFE", "LOVE", "EUPHORIA", "FRIENDS", "MEMORIES", "MADRID", "FREEDOM", "GLORY", "MEETING MY FUTURE WIFE", "THIS NIGHT", "YOU", "THIS MOMENT", "BEING ALIVE", "CALLING MY EX", "GOING OUT TONIGHT", "TONIGHT", "CRAZINESS" "CHAOS"];
+    function swapRedText() {
+        const redTextElement = document.querySelector('.red-text');
+        randomWord = words[Math.floor(Math.random() * words.length)]
+        while (redTextElement.textContent === randomWord) {
+            randomWord = words[Math.floor(Math.random() * words.length)];
+        }
+        redTextElement.textContent = randomWord;
+
+        // Restart the animation
+        redTextElement.style.animation = 'none';
+        redTextElement.offsetHeight; /* trigger reflow */
+        redTextElement.style.animation = null;
+    }
+
+    // Swap text every 10 seconds
+    setInterval(swapRedText, 5000);
+
+    // Initial swap on page load
+    document.addEventListener('DOMContentLoaded', swapRedText);
+</script>
