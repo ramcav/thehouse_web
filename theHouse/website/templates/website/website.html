@@ -154,12 +154,11 @@
             bottom: 15%;
             left: 60%;
         }
-
     </style>
 
 </head>
 <body style="background-color: #0F0F0F;">
-    <h1>I FOLLOWED<br>theHouse<br>AND IT TOOK ME<br> TO<span class="red-text">FREEDOM</span></h1>
+    <h1>I FOLLOWED<br>theHouse<br>AND IT TOOK ME<br> TO<span id="red-text" class="red-text">FREEDOM</span></h1>
     
     <div class="middle">
         <p>don't miss the party, join the waitlist now<p>
@@ -176,7 +175,7 @@
     <div class="bottom"> 
         <div class = "icons">
             <a href="https://www.instagram.com/thehouse_ls/"><img src="{% static 'icons/instagram.png' %}" width="25"></a>
-            <a href="https://www.followthehouse.com"><img src="{% static 'icons/appstore.png'%}" width="25"></a>
+            <a href="https://www.followthehouse.com"><img id="appstore-icon" src="{% static 'icons/appstore.png'%}" width="25"></a>
             <a href="https://www.followthehouse.com"><img src="{% static 'icons/gmail.png'%}" width="25"></a>
         </div>
         <p class = "copyright">© 2023 theHouse. All rights reserved.</p>
@@ -189,15 +188,16 @@
 </html>
 
 <script>
-    const words = ["THE BEST F*$CKING NIGHT OF MY LIFE", "LOVE", "EUPHORIA", "FRIENDS", "MEMORIES", "MADRID", "FREEDOM", "GLORY", "MEETING MY FUTURE WIFE", "THIS NIGHT", "YOU", "THIS MOMENT", "BEING ALIVE", "CALLING MY EX", "GOING OUT TONIGHT", "TONIGHT", "CRAZINESS" "CHAOS"];
+    const words = ["THE BEST F*$CKING NIGHT OF MY LIFE", "LOVE", "EUPHORIA", "FRIENDS", "MEMORIES", "MADRID", "FREEDOM", "GLORY", "MEETING MY FUTURE WIFE", "THIS NIGHT", "YOU", "THIS MOMENT", "BEING ALIVE", "CALLING MY EX", "GOING OUT TONIGHT", "TONIGHT", "CRAZINESS", "CHAOS"];
     function swapRedText() {
-        const redTextElement = document.querySelector('.red-text');
-        randomWord = words[Math.floor(Math.random() * words.length)]
+        const redTextElement = document.getElementById('red-text');
+        let randomWord = words[Math.floor(Math.random() * words.length)];
+        
         while (redTextElement.textContent === randomWord) {
             randomWord = words[Math.floor(Math.random() * words.length)];
         }
         redTextElement.textContent = randomWord;
-
+        
         // Restart the animation
         redTextElement.style.animation = 'none';
         redTextElement.offsetHeight; /* trigger reflow */
@@ -205,7 +205,7 @@
     }
 
     // Swap text every 10 seconds
-    setInterval(swapRedText, 5000);
+    setInterval(swapRedText, 2000);
 
     // Initial swap on page load
     document.addEventListener('DOMContentLoaded', swapRedText);
