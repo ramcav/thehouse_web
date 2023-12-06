@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap');
+
+@font-face {
+    font-family: 'CustomFont';
+    src: url('/static/website/fonts/theHouse_font.woff2') format('woff2'),
+         url('/static/website/fonts/theHouse_font.woff') format('woff'),
+         url('/static/website/fonts/theHouse_font.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Existing @import and @font-face rules */
+
+.sticky-header {
+    position: fixed; 
+    top: 0; 
+    left: 0;
+    width: 100%; 
+    background: #0F0F0F; 
+    z-index: 1000; 
+    padding: 10px 0; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+    text-align: center; 
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2em;
+    margin-bottom: 50px;
+    height: 60px;
+}
+
+
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background: #0F0F0F;
+    color: #F6FDF3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    max-width: 600px;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    padding-top: 60px;
+}
+
+h2 {
+    font-size: 1.2em;
+    color: #F6FDF3;
+    margin-bottom: 0.5em;
+}
+
+h1 {
+    font-size: 2em; 
+    color: #F6FDF3;
+    margin-bottom: 0.5em;
+}
+
+main p {
+    font-size: 1.2em;
+    margin-bottom: 2em;
+    word-wrap: break-word;
+}
+
+p {
+    word-wrap: break-word;
+}
+
+.form-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+form input[type="text"] {
+    max-width: 300px;
+            width: 80%;
+            height: 40px;
+            border-radius: 10px;
+            border: 1px solid #F6FDF3;
+            background-color: #0F0F0F;
+            padding-left: 30px;
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            color: #F6FDF3; 
+            margin-top: 20px;
+            outline: none;
+            box-shadow: 2px 2px 4px rgba(246, 253, 243, 0.5); 
+}
+
+
+button {
+    width: 30%;
+    padding: 1em;
+    background-color: #9B0000;
+    border: none;
+    border-radius: 28px;
+    color: #ffffff;
+    font-size: 1em;
+    text-decoration: none;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    box-shadow: #F6FDF3;
+}
+
+button:hover,
+button:focus {
+    opacity: 0.8;
+    background-color: #9B0000; /* Lighter red on hover/focus for feedback */
+}
+
+.extra-links a,
+footer a {
+    color: #F6FDF3;
+    text-decoration: none;
+    margin: 0 10px; /* Evenly space links */
+}
+
+footer {
+    position: static; /* Stick to the bottom of the content */
+    margin-top: 30px; /* Space from the content */
+}
+
+.header-logo {
+    max-width: 70%; 
+    height: auto; 
+    display: block; 
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.red-text {
+    color: #9B0000;
+    font-family: "CustomFont", sans-serif;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px; /* Adjust padding for smaller screens */
+    }
+
+    main p {
+        font-size: 1em; /* Adjust text size for better readability on smaller screens */
+    }
+}
+
