@@ -1,3 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap');
 
@@ -38,4 +44,27 @@ input[type="tel"]:focus {
 .red-text {
     color: #9B0000;
     font-family: "CustomFont", sans-serif;
+}
+
+
+
+@keyframes infinite {
+  from { transform: 'translateX(0)';}
+  to { transform: 'translateX(-100%)';}
+}
+
+
+
+
+
+#inf-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+#inf-text li {
+  margin: 0 20px;
+  color: white
 }

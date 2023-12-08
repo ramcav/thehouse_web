@@ -10,6 +10,12 @@
      href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"
    />
    <style>
+    html, body, main {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        height: 100vh;
+    }
     input[type="text"],
     input[type="tel"] {
         background: transparent;
@@ -51,22 +57,61 @@
         cursor: pointer; /* Good to have for buttons */
     }
     
+
+    {% comment %} .header:hover {
+        transform: translateX(-100%)
+    } {% endcomment %}
+
+    
+
     .header {
+        margin: 0;
+        padding-top: 30px;
         color: white; 
         font-size: 23px; 
         font-family: Futura; 
         font-weight: 800; 
         letter-spacing: 0.92px; 
-        text-align: center; 
-        white-space: nowrap; 
+        text-align: right;  
+        {% comment %} white-space: nowrap;   {% endcomment %}
+
         overflow: hidden;
-        transition: transform 5s;
+        
+        display: flex;
+        width: 100%;
+        height: 30px;
+        flex-wrap: nowrap;
+        animation: infinite-scroll 10s linear infinite;
+        {% comment %} position: relative; {% endcomment %}
+      }
+    
+    .header div {
+        min-width: 100px;
+        display: inline-block;
+        margin-left: 20px
+        max-width: 50%;
+        {% comment %} position: absolute; {% endcomment %}
     }
 
-    .header:hover {
-        transform: translateX(-100%)
+    @keyframes infinite-scroll {
+    0% {
+        transform: translateX(0%);
     }
-    
+    100% {
+        transform: translateX(100%);
+    }
+    }
+        
+
+    #submit-text {
+        {% comment %} display: none; {% endcomment %}
+        color: #F6FDF3; 
+        font-size: 15px; 
+        font-family: Inter; 
+        font-weight: 500; 
+        word-wrap: break-word; 
+        text-align: center
+    }
     /* Make sure there's no additional margin or padding on the button */
     button:focus, button:hover {
         outline: none; /* Removes the outline on focus for a clean look */
@@ -80,9 +125,12 @@
     <title>theHouse</title>
 </head>
 <body style="background: #0F0F0F">
+
+    <div class="header">
+        I FOLLOWED THE HOUSE AND IT TOOK ME TO <span id="red-text" class="red-text"></span>
+    </div>
     <div style="display: flex; flex-direction:column; align-items: center">
         <div style="width: 100%; height: 100%; background: #0F0F0F">
-            <div class="header">I FOLLOWED THE HOUSE AND IT TOOK ME TO <span id="red-text" class="red-text"></span></div>
             <img style="width: 50em; max-width: 70%; display:block; margin-right: auto; margin-left: auto" src="{% static 'logo/logo.png' %}" />
             <div style="height: 50px;"> </div>
             <div style="color: #F6FDF3; font-size: 23px; font-family: Futura; font-weight: 800; word-wrap: break-word; text-align: center">DON’T MISS THE PARTY</div>
@@ -99,7 +147,9 @@
             <div style="height: 30px;"> </div>
             <div style="color: rgba(246, 253, 243, 0.87); font-size: 15px; font-family: Inter; font-weight: 500; word-wrap: break-word; text-align: center">that's why you'll only hear from us when your username is ready</div>
             <div style="display: flex; flex-direction: column; align-items: center;">
-                <button class="form-input" type="submit">join the list</button>
+                <button id="submit" class="form-input" type="submit">join the list</button>
+                {% comment %} This span below is invisible until the forms is submitted {% endcomment %}
+                <span id="submit-text">you've been added to the list.<br>we'll be waiting for you ...</span>
             </div>
         </div>
     </div>
@@ -115,16 +165,6 @@
         "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
     });
   </script> {% endcomment %}
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -144,6 +184,17 @@
         redTextElement.offsetHeight; /* trigger reflow */
         redTextElement.style.animation = null;
     }
+
+    // defines what to do when the form is submitted
+    const handleSubmit = () => {
+        message = document.getElementById("submit-text");
+        message.style.display = "block";
+    }
+    
+
+    // adds an event listener to the form
+    submit = document.getElementById("submit");
+    submit.addEventListener("submit", handleSubmit);
 
     // Swap text every 10 seconds
     setInterval(swapRedText, 2000);
