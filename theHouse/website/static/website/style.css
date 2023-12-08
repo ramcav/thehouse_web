@@ -39,3 +39,26 @@ input[type="tel"]:focus {
     color: #9B0000;
     font-family: "CustomFont", sans-serif;
 }
+
+
+
+@keyframes infinite {
+  from { transform: 'translateX(0)';}
+  to { transform: 'translateX(-100%)';}
+}
+
+
+
+
+
+#inf-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+#inf-text li {
+  margin: 0 20px;
+  color: white
+}
