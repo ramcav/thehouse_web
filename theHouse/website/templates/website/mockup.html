@@ -9,37 +9,26 @@
 </head>
 <body>
     <div class="sticky-header">
-        <h2>I FOLLOWED theHouse AND IT TOOK ME TOO <span id="red-text" class="red-text">FREEDOM</span></h2>
+        <h2>I FOLLOWED theHouse AND IT TOOK ME TO <span id="red-text" class="red-text"> FREEDOM</span></h2>
+    </div>
+    <div class="container">
+        <header>
+            <img class="header-logo" src="{% static 'logo/logo.png' %}" alt="Logo">
+        </header>
+        <h1>don't miss the party</h1>
+        <p>drop your phone # and we'll save the username for you 🔥</p>
+
+        <form action="#" method="POST">
+            <div class="form-input">
+                <input type="text" id="username" name="username" placeholder="username you want">
+                <input type="text" id="phone" name="phone" placeholder="(678) 999-8212">
+                
+            </div>
+            <p>FYI - we know spam sucks.</p>
+            <p>you'll only hear from us when your username is ready 🏠</p>
+            <button class="form-input" type="submit">join the list</button>
     </div>
 
-    <div class="container">
-        <main>
-            <header>
-                <img class="header-logo" src="{% static 'logo/logo.png' %}" alt="Logo">
-            </header>
-            <h1>don't miss the party</h1>
-            <p>drop your phone # to reserve your username and we’ll text you when it’s ready 🔥</p>
-            <form action="#" method="POST">
-                <div class="form-input">
-                    <input type="text" id="username" name="username" placeholder="username you want">
-                    <input type="text" id="phone" name="phone" placeholder="(678) 999-8212">
-                    <button class="form-input" type="submit">join the list</button>
-                </div>
-                <p>FYI – your phone number is used for account updates, not spam. promise 🚀</p>
-                
-            </form>
-            <div class="extra-links">
-                <a href="#">signed up already?</a>
-                <a href="#">check your spot & invite friends</a>
-            </div>
-        </main>
-        <footer>
-            <a href="#">terms of service</a>
-            <a href="#">privacy policy</a>
-            <a href="#">community rules</a>
-            <a href="#">contact us</a>
-        </footer>
-    </div>
 </body>
 </html>
 

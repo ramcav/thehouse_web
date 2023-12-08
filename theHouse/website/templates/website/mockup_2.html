@@ -1,0 +1,165 @@
+{% load static %}
+
+<DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{% static 'website/style.css' %}"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+     rel="stylesheet"
+     href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"
+   />
+   <style>
+    input[type="text"],
+    input[type="tel"] {
+        background: transparent;
+        border: 2px solid #FFFFFF;
+        border-radius: 30px; /* gives the rounded corners */
+        font-size: 16px;
+        color: white;
+        padding: 15px 20px; /* gives some padding inside the inputs */
+        margin: 10px auto; /* centers the inputs horizontally */
+        width: 20em; /* fixed width */
+        max-width: 50%; /* ensures the input fields do not exceed their parent's width */
+        box-sizing: border-box; /* makes sure padding doesn't affect the total width */
+        outline: none; /* removes the default focus outline */
+        display: block; /* ensures inputs are on their own line */
+    }
+    
+    input[type="text"]::placeholder,
+    input[type="tel"]::placeholder {
+        color: rgba(255, 255, 255, 0.5); /* lighter placeholder text */
+    }
+    
+    input[type="text"]:focus,
+    input[type="tel"]:focus {
+        box-shadow: 0 0 10px #FFFFFF; /* adds the glow effect on focus */
+    }
+
+    button {
+        width: auto; /* Or match the width to your input fields */
+        padding: 1em;
+        background-color: #9B0000;
+        border: none;
+        border-radius: 28px;
+        color: #ffffff;
+        font-size: 1.2em;
+        text-decoration: none;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        box-shadow: #F6FDF3;
+        cursor: pointer; /* Good to have for buttons */
+    }
+    
+    .header {
+        color: white; 
+        font-size: 23px; 
+        font-family: Futura; 
+        font-weight: 800; 
+        letter-spacing: 0.92px; 
+        text-align: center; 
+        white-space: nowrap; 
+        overflow: hidden;
+        transition: transform 5s;
+    }
+
+    .header:hover {
+        transform: translateX(-100%)
+    }
+    
+    /* Make sure there's no additional margin or padding on the button */
+    button:focus, button:hover {
+        outline: none; /* Removes the outline on focus for a clean look */
+        opacity: 0.8;
+    }
+    
+    </style>
+
+
+
+    <title>theHouse</title>
+</head>
+<body style="background: #0F0F0F">
+    <div style="display: flex; flex-direction:column; align-items: center">
+        <div style="width: 100%; height: 100%; background: #0F0F0F">
+            <div class="header">I FOLLOWED THE HOUSE AND IT TOOK ME TO <span id="red-text" class="red-text"></span></div>
+            <img style="width: 50em; max-width: 70%; display:block; margin-right: auto; margin-left: auto" src="{% static 'logo/logo.png' %}" />
+            <div style="height: 50px;"> </div>
+            <div style="color: #F6FDF3; font-size: 23px; font-family: Futura; font-weight: 800; word-wrap: break-word; text-align: center">DON’T MISS THE PARTY</div>
+            <div style="height: 30px;"> </div>
+            <div style="color: rgba(246, 253, 243, 0.87); font-size: 15px; font-family: Inter; font-weight: 500; word-wrap: break-word; text-align: center">drop your phone # and we'll stash your username 🔥</div>
+            <div style="height: 50px;"> </div>
+            <form action="#" method="POST">
+            <div class="form-input" style="display: flex; flex-direction: column; align-items: center;">
+                <input type="text" id="username" name="username" placeholder="username you want">
+                <input type="tel" id="phone" name="phone" placeholder="(678) 999-8212">
+            </div>
+            <div style="height: 20px;"> </div>
+            <div style="color: rgba(246, 253, 243, 0.87); font-size: 15px; font-family: Inter; font-weight: 500; word-wrap: break-word; text-align: center">FYI... we know spam sucks</div>
+            <div style="height: 30px;"> </div>
+            <div style="color: rgba(246, 253, 243, 0.87); font-size: 15px; font-family: Inter; font-weight: 500; word-wrap: break-word; text-align: center">that's why you'll only hear from us when your username is ready</div>
+            <div style="display: flex; flex-direction: column; align-items: center;">
+                <button class="form-input" type="submit">join the list</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+{% comment %} <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+
+<script>
+    const phoneInputField = document.querySelector("#phone");
+    const phoneInput = window.intlTelInput(phoneInputField, {
+      utilsScript:
+        "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+    });
+  </script> {% endcomment %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    const words = ["THE BEST F*$CKING NIGHT OF MY LIFE", "LOVE", "EUPHORIA", "FRIENDS", "MEMORIES", "MADRID", "FREEDOM", "GLORY", "MEETING MY FUTURE WIFE", "THIS NIGHT", "YOU", "THIS MOMENT", "BEING ALIVE", "CALLING MY EX", "GOING OUT TONIGHT", "TONIGHT", "CRAZINESS", "CHAOS"];
+    function swapRedText() {
+        const redTextElement = document.getElementById('red-text');
+        let randomWord = words[Math.floor(Math.random() * words.length)];
+        
+        while (redTextElement.textContent === randomWord) {
+            randomWord = words[Math.floor(Math.random() * words.length)];
+        }
+        redTextElement.textContent = randomWord;
+        
+        // Restart the animation
+        redTextElement.style.animation = 'none';
+        redTextElement.offsetHeight; /* trigger reflow */
+        redTextElement.style.animation = null;
+    }
+
+    // Swap text every 10 seconds
+    setInterval(swapRedText, 2000);
+
+    // Initial swap on page load
+    document.addEventListener('DOMContentLoaded', swapRedText);
+
+    const info = document.querySelector(".alert-info");
+
+    function process(event) {
+    event.preventDefault();
+
+    const phoneNumber = phoneInput.getNumber();
+
+    info.style.display = "";
+    info.innerHTML = `Phone number in E.164 format: <strong>${phoneNumber}</strong>`;
+    }
+</script>
+

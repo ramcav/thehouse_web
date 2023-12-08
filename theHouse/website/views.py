@@ -12,7 +12,7 @@ class LandingView(View):
             'installed': settings.INSTALLED_APPS,
             'islocal': islocal
         }
-        return render(request, 'website/mockup.html', context)
+        return render(request, 'website/mockup_2.html', context)
 
 class Waitlist(View):
     def post(self, request):
