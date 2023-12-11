@@ -17,12 +17,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 APP_NAME = "theHouse"
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-jp&sqfydpga)v*-z7nb(_@7j)rq_jadw1i(gx9li6srr93q4v8'
+SECRET_KEY = 'django-insecure-kwbr5@kiq&)tuybyy(s52%ho-)gk3@ae!=6hc^)%47%ri4!=5k'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -39,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'website.apps.WebsiteConfig'
 ]
 
 MIDDLEWARE = [
