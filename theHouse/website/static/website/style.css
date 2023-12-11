@@ -35,7 +35,7 @@ input[type="tel"]:focus {
 }
 
 
-.header span .red-text {
+.red-text {
     color: #9B0000;
     font-family: "CustomFont", sans-serif;
 }

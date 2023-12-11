@@ -69,40 +69,44 @@
     
 
     .header {
-        align-self: center;
-        overflow: hidden;
-        position: relative;
-        padding-bottom: 2vw;
-        /* Additional styles from your comment, if needed */
-    }
-    
-    .header span {
+        margin: 0;
+        padding-top: 30px;
+        color: white; 
+        font-size: 23px; 
+        font-family: Futura; 
+        font-weight: 800; 
+        letter-spacing: 0.92px; 
+        text-align: right;  
+        {% comment %} white-space: nowrap;   {% endcomment %}
+
+        display: none;
+        overflow: visible;
         white-space: nowrap;
-        font-size: 23px; /* Adjusted from the commented style */
-        font-family: Futura;
-        font-weight: 800;
-        letter-spacing: 0.92px;
-        color: white; /* Set text color to white */
-        display: block;
-        top: 0;
-        left: 0;
-        animation: scrollHeader 10s 0s linear forwards infinite;
+        
+        display: flex;
+        width: 100%;
+        height: 30px;
+        flex-wrap: nowrap;
+        animation: infinite-scroll 10s linear infinite;
+        {% comment %} position: relative; {% endcomment %}
+      }
+    
+    .header div {
+        min-width: 100px;
+        display: inline-block;
+        margin-left: 20px
+        max-width: 50%;
+        {% comment %} position: absolute; {% endcomment %}
     }
 
-    .header .red-text {
-        color: #9B0000;
-        font-family: "CustomFont", sans-serif;
+    @keyframes infinite-scroll {
+    0% {
+        transform: translateX(-250%);
     }
-    
-    @keyframes scrollHeader {
-        0% {
-            transform: translateX(100%);
-        }
-        100% {
-            transform: translateX(-200%); /* Adjust this as needed */
-        }
+    100% {
+        transform: translateX(100%);
     }
-    
+    }
         
 
     #submit-text {
@@ -119,36 +123,6 @@
         outline: none; /* Removes the outline on focus for a clean look */
         opacity: 0.8;
     }
-
-    p {
-        display: inline;
-    }
-
-    /* Base animation keyframes */
-@keyframes scrollHeader {
-    0% { transform: translateX(100%); }
-    100% { transform: translateX(-200%); }
-}
-
-/* Base speed for small screens (phones) */
-.header span {
-    animation: scrollHeader 10s linear infinite;
-}
-
-/* Medium screens (e.g., tablets) */
-@media (min-width: 600px) {
-    .header span {
-        animation: scrollHeader 15s linear infinite;
-    }
-}
-
-/* Larger screens (e.g., desktops) */
-@media (min-width: 1000px) {
-    .header span {
-        animation: scrollHeader 20s linear infinite;
-    }
-}
-
     
     </style>
 
@@ -159,9 +133,8 @@
 <body style="background: #0F0F0F">
 
     <div class="header">
-        <span>I FOLLOWED THE HOUSE AND IT TOOK ME TO <p id="red-text" class="red-text"></p> </span> 
+        I FOLLOWED THE HOUSE AND IT TOOK ME TO<span> </span><span id="red-text" class="red-text"></span>
     </div>
-
     <div style="display: flex; flex-direction:column; align-items: center">
         <div style="width: 100%; height: 100%; background: #0F0F0F">
             <img style="width: 50em; max-width: 70%; display:block; margin-right: auto; margin-left: auto" src="{% static 'logo/logo.png' %}" />
@@ -230,7 +203,7 @@
     submit.addEventListener("submit", handleSubmit);
 
     // Swap text every 10 seconds
-    setInterval(swapRedText, 11000);
+    setInterval(swapRedText, 5000);
 
     // Initial swap on page load
     document.addEventListener('DOMContentLoaded', swapRedText);
