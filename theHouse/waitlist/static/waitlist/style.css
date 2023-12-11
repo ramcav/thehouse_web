@@ -1,0 +1,303 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap');
+
+@font-face {
+    font-family: 'CustomFont';
+    src: url('../waitlist/fonts/theHouse_font.woff2') format('woff2'),
+         url('../waitlist/fonts/theHouse_font.woff') format('woff'),
+         url('../waitlist/fonts/theHouse_font.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    
+}
+
+
+body {
+  background: #0F0F0F;
+  overflow-x: hidden;
+}
+
+html, body, main {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+}
+
+body {
+  overflow-x: hidden;
+}
+input[type="text"],
+input[type="email"] {
+  background: transparent;
+  border: 2px solid #aeacac;
+  border-radius: 30px;
+  font-size: 16px;
+  color: white;
+  padding: 15px 20px;
+  margin: 10px auto;
+  width: 30em;
+  max-width: 50%;
+  box-sizing: border-box;
+  outline: none;
+  display: block;
+}
+
+.gif {
+    width: 400px;
+    padding-top: 50px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+input[type="text"]::placeholder,
+input[type="email"]::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus {
+  box-shadow: 0 0 10px #0F0F0F;
+}
+
+.form-button-container {
+  display: flex; 
+  flex-direction: column; 
+  align-items: center;
+  margin-bottom: 0;
+}
+  
+button {
+  width: auto;
+  padding: 15px 40px; /* Adjust padding to maintain button size */
+  background-color: #9B0000;
+  border: none;
+  border-radius: 28px;
+  color: #F6FDF3;
+  font-size: calc(14px + 0.35vw); /* Increase font size */
+  text-decoration: none;
+  margin-top: 1em;
+  margin-bottom: 0;
+  box-shadow: #F6FDF3;
+  cursor: pointer;
+}
+
+.header {
+  align-self: center;
+  overflow: hidden;
+  position: relative;
+  padding-bottom: 2vw;
+}
+
+.header span {
+  white-space: nowrap;
+  font-size: 23px;
+  font-family: Futura;
+  font-weight: 800;
+  letter-spacing: 0.92px;
+  color: #F6FDF3;
+  display: block;
+  top: 0;
+  left: 0;
+  animation: scrollHeader 10s 0s linear forwards infinite;
+}
+
+.header .red-text {
+  color: #9B0000;
+  font-family: "CustomFont", sans-serif;
+}
+
+@keyframes scrollHeader {
+  0% {
+      transform: translateX(100%);
+  }
+  100% {
+      transform: translateX(-200%);
+  }
+}
+
+#submit-text {
+  display: none;
+  color: #F6FDF3; 
+  font-size: 15px; 
+  font-family: Inter; 
+  font-weight: 500; 
+  word-wrap: break-word; 
+  text-align: center
+}
+
+button:focus, button:hover {
+  outline: none;
+  opacity: 0.8;
+}
+
+p {
+  display: inline;
+}
+
+@keyframes scrollHeader {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-200%); }
+}
+
+.main-content {
+  display: flex; 
+  flex-direction: column; 
+  align-items: center;
+}
+
+.content-wrapper {
+  width: 100%; 
+  height: 100%; 
+  background: #0F0F0F;
+}
+
+.logo-image {
+    max-width: 70%; 
+    height: auto;
+    display: block;
+    margin: 0 auto; 
+}
+
+.spacer-medium {
+  height: 50px;
+}
+
+.spacer-small {
+  height: 30px;
+}
+.spacer-extra-small {
+  height: 10px;
+}
+
+.spacer-large {
+  height: 50px;
+}
+
+.party-text {
+  color: #F6FDF3; 
+  font-size: calc(24px + 1.5vw);
+  font-family: Futura; 
+  font-weight: 800; 
+  word-wrap: break-word; 
+  text-align: center;
+}
+ .spam-info, .hear-from-us-info {
+  color: rgba(246, 253, 243, 0.87); 
+  font-size: 10px; 
+  font-family: Inter; 
+  font-weight: 500; 
+  word-wrap: break-word; 
+  text-align: center;
+}
+
+.username-info {
+  color: rgba(246, 253, 243, 0.87); 
+  font-size: 15px; 
+  font-family: Inter; 
+  font-weight: 500; 
+  word-wrap: break-word; 
+  text-align: center;
+}
+
+.username-info, .spam-info, .hear-from-us-info {
+    font-size: calc(10px + 0.5vw); /* Adjust the base size and viewport unit as needed */
+}
+
+.user-form {
+  display: flex; 
+  flex-direction: column; 
+  align-items: center;
+}
+
+.horizontal-padding {
+  padding-left: 20px;  /* adjust as needed */
+  padding-right: 20px; /* adjust as needed */
+}
+
+.consent-message {
+  font-size: 10px; /* Small font size */
+  color: #aeacac; /* Adjust color as needed */
+  text-align: center;
+  margin-bottom: 10px; /* Spacing before the button */
+  font-family: Inter;
+}
+
+.consent-message a {
+  color: #9B0000; /* Color of the link, adjust as needed */
+  text-decoration: underline;
+}
+
+.consent-message a:hover {
+  color: #aeacac; /* Color on hover, adjust as needed */
+}
+
+.fixed-header {
+    align-self: center;
+    padding-bottom: 2vw;
+    font-size: 50px;
+    font-family: Futura;
+    font-weight: 800;
+    letter-spacing: 0.92px;
+    color: #F6FDF3;
+    display: block;
+    text-align: center;
+}
+
+.fixed-header .red-text {
+    color: #9B0000;
+    font-family: "CustomFont", sans-serif;
+  }
+
+.social-icons {
+    text-align: center;
+    margin-top: 10px; /* Adjust as needed */
+}
+
+.social-icon {
+    margin: 0 10px; /* Spacing between icons */
+    width: 50px; /* Adjust the size as needed */
+    height: auto;
+}
+   
+
+@media (min-width: 600px) {
+    .header span {
+        animation: scrollHeader 15s linear infinite;
+    }
+
+    .logo-image {
+        max-width: 70%
+    }
+  }
+
+  
+  @media (min-width: 1200px) {
+    .header span {
+        animation: scrollHeader 20s linear infinite;
+    }
+    .logo-image {
+          max-width: 30%; /* Larger screens get a smaller max-width */
+        }
+      
+    .username-info, .spam-info, .hear-from-us-info {
+          font-size: calc(10px + 0.5vw); /* Larger base size for larger screens */
+        }
+      
+
+    button {
+        padding: 20px 60px; /* Even larger padding for larger screens */
+        font-size: calc(16px + 0.35vw); /* Larger base size for larger screens */
+      }
+    
+    .consent-message {
+        font-size: calc(7px + 0.35vw); /* Adjust the base size for larger screens */
+      }
+  
+    .party-text {
+        font-size: calc(28px + 1.5vw); /* Even larger base size for larger screens */
+        /* Adjust any other properties as necessary */
+      }
+
+    }

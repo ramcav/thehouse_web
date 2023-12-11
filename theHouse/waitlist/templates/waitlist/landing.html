@@ -1,212 +1,72 @@
 {% load static %}
 
 <!DOCTYPE html>
-
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'waitlist/style.css' %}"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
     <title>theHouse</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap');
-
-        @font-face {
-            font-family: 'CustomFont';
-            src: url('{% static "fonts/theHouse_font.woff2" %}') format('woff2'),
-            url('{% static "fonts/theHouse_font.woff" %}') format('woff'),
-            url('{% static "fonts/theHouse_font.otf" %}') format('opentype');
-            font-weight: normal;
-            font-style: normal;
-            
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-
-        body {
-            background-color: #0F0F0F;
-            padding-left: 20px; /* Adjust the value as needed */
-        }
-
-        h1 {
-            font-family: 'Work Sans', sans-serif;
-            font-size: 4vw;
-            color: #F6FDF3;
-            text-align: left;
-            margin-top: 50px;
-        }
-
-        h1 .red-text {
-            font-family: 'CustomFont', sans-serif;
-            font-size: 4.5vw;
-            color: #9B0000;
-            display: inline;
-            padding: 10px;
-            animation: fadeIn 1s;
-            position: relative;
-            z-index: 10;
-            
-        }
-
-        p {
-            font-family: 'Inter', sans-serif;
-            font-size: 1vw;
-            color: #F6FDF3;
-            text-align: left;
-            margin-top: 10px;
-        }
-
-        .icons {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 20px;
-        }
-        
-        .icons img {
-            width: 100%;
-            max-width: 25px;
-            margin: 0 10px;
-        }
-
-        .icons img:hover {
-            opacity: 0.5;
-        }
-
-        input[type=email], input[type=text] {
-            max-width: 300px;
-            width: 80%;
-            height: 40px;
-            border-radius: 10px;
-            border: 1px solid #F6FDF3;
-            background-color: #0F0F0F;
-            padding-left: 30px;
-            font-family: 'Inter', sans-serif;
-            font-size: 15px;
-            color: #F6FDF3; 
-            margin-top: 20px;
-            outline: none;
-            box-shadow: 2px 2px 4px rgba(246, 253, 243, 0.5); 
-        }
-        
-        input[type=email]::placeholder, input[type=text]::placeholder {
-            font-family: 'Inter', sans-serif;
-            font-size: 15px;
-            opacity: 1;
-        }
-
-        input[type=submit] {
-            max-width: 130px;
-            width: 80%;
-            height: 40px;
-            border-radius: 10px;
-            border: none;
-            background-color: #9B0000;
-            color: #F6FDF3;
-            font-family: 'Inter', sans-serif;
-            font-size: 15px;
-            margin-top: 20px;
-            display: inline;
-            box-shadow: 2px 2px 4px rgba(155, 0, 0, 0.5)
-        }
-
-        input[type=submit]:hover {
-            opacity: 0.5;
-        }
-
-        .form-input {
-            display: flex;
-            flex-direction: column;
-            align-items: left;
-            justify-content: left;
-        }
-
-        .copyright {
-            font-family: 'Inter', sans-serif;
-            font-size: 10px;
-            color: #F6FDF3;
-            text-align: center;
-            margin-top: 20px;
-        }
-        
-        .bottom {
-            position: fixed;
-            bottom: 0;
-            left: 50%;
-        }
-
-        .middle {
-            padding-top: 50px;
-        }
-
-        input[type=email]:focus {
-            font-size: 15px;
-        }
-
-        .logo img {
-            width: 60vw;
-            position: fixed;
-            bottom: 15%;
-            left: 60%;
-        }
-    </style>
-
 </head>
-<body style="background-color: #0F0F0F;">
-    <h1>I FOLLOWED<br>theHouse<br>AND IT TOOK ME<br> TO<span id="red-text" class="red-text">FREEDOM</span></h1>
-    
-    <div class="middle">
-        <p>don't miss the party, join the waitlist now<p>
-            <form action="{% url 'theHouse:waitlist' %}" method="post">
+<body>
+    <div class="header">
+        <span>I FOLLOWED THE HOUSE AND IT TOOK ME TO <p id="red-text" class="red-text"></p> </span> 
+    </div>
+
+    <div class="main-content">
+        <div class="content-wrapper">
+            <img src="{% static 'waitlist/logo.png' %}" class="logo-image"/>
+            <div class="spacer-small"></div>
+            <div class="party-text">YOUR BEST NIGHT</div>
+            <div class="party-text">EVERY NIGHT</div>
+            <div class="spacer-small"></div>
+            <div class="username-info horizontal-padding">drop your email and we'll stash your username 🔥</div>
+            <div class="spacer-small"></div>
+            <form action="#" method="POST" class="user-form">
                 {% csrf_token %}
-                <div class = "form-input">
-                    <input size="15" type="text" name="name" placeholder="your first name...">
-                    <input size="15" type="email" name="email" placeholder="and your email...">
-                    <input type="submit" value="join the waitlist">
+                <div class="form-input">
+                    <input type="text" id="username" name="username" placeholder="username you want">
+                    <input type="email" id="email" name="phone" placeholder="tonight@thehouse.com">
                 </div>
-    </div>
-    
-    </form>
-    <div class="bottom"> 
-        <div class = "icons">
-            <a href="https://www.instagram.com/thehouse_ls/"><img src="{% static 'icons/instagram.png' %}" width="25"></a>
-            <a href="https://www.followthehouse.com"><img id="appstore-icon" src="{% static 'icons/appstore.png'%}" width="25"></a>
-            <a href="https://www.followthehouse.com"><img src="{% static 'icons/gmail.png'%}" width="25"></a>
+                <div class="spacer-small"></div>
+                <div class="spam-info horizontal-padding" >FYI... we know spam sucks</div>
+                <div class="spacer-extra-small"></div>
+                <div class="hear-from-us-info horizontal-padding">that's why you'll only hear from us when your username is ready</div>
+                <div class="consent-message">
+                <div class="form-button-container">
+                    <button id="submit" class="form-input" type="submit">join the list</button>
+                    <div class="spacer-small"></div>
+                    By submitting this form, I consent to the <a href="url-to-terms-and-conditions" class="terms-link">Terms & Conditions</a>
+                    </div>
+                    <span id="submit-text">you've been added to the list.<br>we'll be waiting for you ...</span>
+                </div>
+            </form>
         </div>
-        <p class = "copyright">© 2023 theHouse. All rights reserved.</p>
     </div>
-    
-    <div class="logo">
-        <img src="{% static 'logo/logo.png' %}" width = "100">
-    </div>
+
+    <script>
+        const words = ["THE BEST F*$CKING NIGHT OF MY LIFE", "LOVE", "EUPHORIA", "FRIENDS", "MEMORIES", "MADRID", "FREEDOM", "GLORY", "MEETING MY FUTURE WIFE", "THIS NIGHT", "YOU", "THIS MOMENT", "BEING ALIVE", "CALLING MY EX", "GOING OUT TONIGHT", "TONIGHT", "CRAZINESS", "CHAOS"];
+        function swapRedText() {
+            const redTextElement = document.getElementById('red-text');
+            let randomWord = words[Math.floor(Math.random() * words.length)];
+            
+            while (redTextElement.textContent === randomWord) {
+                randomWord = words[Math.floor(Math.random() * words.length)];
+            }
+            redTextElement.textContent = randomWord;
+            
+            // Restart the animation
+            redTextElement.style.animation = 'none';
+            redTextElement.offsetHeight; /* trigger reflow */
+            redTextElement.style.animation = null;
+        }
+
+        // Swap text every 10 seconds
+        setInterval(swapRedText, 12000);
+
+        // Initial swap on page load
+        document.addEventListener('DOMContentLoaded', swapRedText);
+
+    </script>
 </body>
 </html>
-
-<script>
-    const words = ["THE BEST F*$CKING NIGHT OF MY LIFE", "LOVE", "EUPHORIA", "FRIENDS", "MEMORIES", "MADRID", "FREEDOM", "GLORY", "MEETING MY FUTURE WIFE", "THIS NIGHT", "YOU", "THIS MOMENT", "BEING ALIVE", "CALLING MY EX", "GOING OUT TONIGHT", "TONIGHT", "CRAZINESS", "CHAOS"];
-    function swapRedText() {
-        const redTextElement = document.getElementById('red-text');
-        let randomWord = words[Math.floor(Math.random() * words.length)];
-        
-        while (redTextElement.textContent === randomWord) {
-            randomWord = words[Math.floor(Math.random() * words.length)];
-        }
-        redTextElement.textContent = randomWord;
-        
-        // Restart the animation
-        redTextElement.style.animation = 'none';
-        redTextElement.offsetHeight; /* trigger reflow */
-        redTextElement.style.animation = null;
-    }
-
-    // Swap text every 10 seconds
-    setInterval(swapRedText, 2000);
-
-    // Initial swap on page load
-    document.addEventListener('DOMContentLoaded', swapRedText);
-</script>

@@ -1,0 +1,54 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'waitlist/style.css' %}">  <!-- Update the path to your CSS file -->
+    <title>Waitlist Confirmation</title>
+</head>
+<body>
+
+    <div class="main-content">
+        <div class="content-wrapper">
+
+            <img src="{% static 'waitlist/thehouse_gif.gif' %}" alt="gif" class="gif"> <!-- Update the path to your logo -->
+
+            <div class="spacer-medium"></div>
+
+            <div class="fixed-header">
+                <span>
+                WELCOME TO<br><p class ="red-text">THEHOUSE</p>
+                </span>
+            </div>
+
+            <div class="username-info">
+                thank <b>you</b> for joining the family. you will hear from us soon 🏠
+            </div>
+
+            <div class="username-info">
+                follow us to stay updated
+            </div>
+
+            <div class="spacer-small"></div>
+
+            <div class="social-icons">
+                <a href="https://www.instagram.com/thehouse_ls/" target="_blank">
+                    <img src="{% static 'waitlist/instagram.svg' %}" alt="Instagram" class="social-icon">
+                </a>
+                <a href="https://www.tiktok.com/@inside.thehouse" target="_blank">
+                    <img src="{% static 'waitlist/tiktok.svg' %}" alt="TikTok" class="social-icon">
+                </a>
+            </div>
+
+            <div class="spacer-small"></div>
+
+            {% comment %} <div class="consent-message">
+                <a href="/" class="form-button" style = "font-size:15px">Back to Home</a> <!-- Update the href to point to your home page or another page -->
+            </div> {% endcomment %}
+        </div>
+    </div>
+
+</body>
+</html>
