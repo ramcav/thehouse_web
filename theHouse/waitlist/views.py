@@ -11,17 +11,21 @@ class LandingView(View):
 
     def post(self, request, *args, **kwargs):
         form = UserSubmissionForm(request.POST)
+        print(form)
         if form.is_valid():
             # Extract the username from the form
             username = form.cleaned_data.get('username')
-            email = form.cleand_data.get('email')
+            email = form.cleaned_data.get('email')
 
             # Check if a user with this username already exists
             if UserSubmission.objects.filter(username=username).exists():
                 # Handle the case where the username already exists
                 # You can add an error message to the form or context here
+                print("username already exists")
                 return render(request, 'waitlist/landing.html', {'form': form, 'error': 'Username already exists.'})
+            
             elif UserSubmission.objects.filter(email=email).exists():
+                print("email already exists")
                 return render(request, 'waitlist/landing.html', {'form': form, 'error': 'Username already exists.'})
 
             # Save the form since the username is unique
@@ -29,9 +33,13 @@ class LandingView(View):
             # Additional processing if necessary
             submission.save()
 
+            
+            print("success")
             # Redirect to success page
             return redirect("/success")
+    
         else:
+            print(form.errors)
             # Form is not valid, render the page with form errors
             return render(request, 'waitlist/landing.html', {'form': form})
         

@@ -22,11 +22,11 @@
             <div class="spacer-small"></div>
             <div class="username-info horizontal-padding">drop your email and we'll stash your username 🔥</div>
             <div class="spacer-small"></div>
-            <form action="#" method="POST" class="user-form">
+            <form action="{% url 'thehouse:landing' %}" method="POST" class="user-form">
                 {% csrf_token %}
                 <div class="form-input">
                     <input type="text" id="username" name="username" placeholder="username you want">
-                    <input type="email" id="email" name="phone" placeholder="tonight@thehouse.com">
+                    <input type="email" id="email" name="email" placeholder="tonight@thehouse.com">
                 </div>
                 <div class="spacer-small"></div>
                 <div class="spam-info horizontal-padding" >FYI... we know spam sucks</div>
