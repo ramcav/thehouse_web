@@ -9,9 +9,19 @@
     <title>theHouse</title>
 </head>
 <body>
+
     <div class="header">
         <span>I FOLLOWED THE HOUSE AND IT TOOK ME TO <p id="red-text" class="red-text"></p> </span> 
     </div>
+
+    {% comment %} POPUP FOR USERNAMES ALREADY RESERVED {% endcomment %}
+    <div id="popup" class="popup" style="display: none;">
+        <div class="popup-inner">
+          <p id="popup-message">This is a placeholder message.</p>
+          <button id="popup-button" onclick="hidePopup()" class="close-btn">stash another one</button>
+        </div>
+      </div>
+
 
     <div class="main-content">
         <div class="content-wrapper">
@@ -25,8 +35,8 @@
             <form action="{% url 'thehouse:landing' %}" method="POST" class="user-form">
                 {% csrf_token %}
                 <div class="form-input">
-                    <input type="text" id="username" name="username" placeholder="username you want">
-                    <input type="email" id="email" name="email" placeholder="tonight@thehouse.com">
+                    <input type="text" id="username" name="username" placeholder="username you want" required>
+                    <input type="email" id="email" name="email" placeholder="tonight@thehouse.com" required>
                 </div>
                 <div class="spacer-small"></div>
                 <div class="spam-info horizontal-padding" >FYI... we know spam sucks</div>
@@ -66,6 +76,22 @@
 
         // Initial swap on page load
         document.addEventListener('DOMContentLoaded', swapRedText);
+
+        function showPopup(message, buttonText) {
+            document.getElementById('popup-message').textContent = message;
+            document.getElementById('popup-button').textContent = buttonText; 
+            document.getElementById('popup').style.display = 'flex';
+        }
+        
+        function hidePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+        
+        {% if error %}
+        document.addEventListener('DOMContentLoaded', function() {
+            showPopup("{{ error }}", "{{ button_message }}");
+        });
+        {% endif %}
 
     </script>
 </body>
