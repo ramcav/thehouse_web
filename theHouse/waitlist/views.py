@@ -1,10 +1,14 @@
+import os
+
 from django.shortcuts import render, redirect
 from django.conf import settings
 from django.views import View
+from django.http import FileResponse, Http404
+from django.utils.safestring import mark_safe
+from django.contrib.staticfiles import finders
+
 from .forms import UserSubmissionForm
 from .models import UserSubmission
-
-from django.utils.safestring import mark_safe
 
 class LandingView(View):
     def get(self, request, *args, **kwargs):
@@ -59,3 +63,32 @@ class Confirmation(View):
     def get(self, request):
         return render(request, 'waitlist/confirmation.html')
             
+def terms_of_service_pdf(request):
+    pdf_filename = 'terms.pdf'
+    if settings.DEBUG:
+        pdf_path = finders.find('waitlist/pdfs/' + pdf_filename)
+    else:
+        pdf_path = os.path.join(settings.STATIC_ROOT, 'waitlist/pdfs', pdf_filename)
+
+    if pdf_path is not None:
+        try:
+            return FileResponse(open(pdf_path, 'rb'), content_type='application/pdf')
+        except FileNotFoundError:
+            raise Http404('The requested pdf was not found in our server.')
+    else:
+        raise Http404('The requested pdf was not found in our server.')
+
+def privacy_policy_pdf(request):
+    pdf_filename = 'privacy.pdf'
+    if settings.DEBUG:
+        pdf_path = finders.find('waitlist/pdfs/' + pdf_filename)
+    else:
+        pdf_path = os.path.join(settings.STATIC_ROOT, 'waitlist/pdfs', pdf_filename)
+
+    if pdf_path is not None:
+        try:
+            return FileResponse(open(pdf_path, 'rb'), content_type='application/pdf')
+        except FileNotFoundError:
+            raise Http404('The requested pdf was not found in our server.')
+    else:
+        raise Http404('The requested pdf was not found in our server.')

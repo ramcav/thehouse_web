@@ -42,14 +42,19 @@
                 <div class="spam-info horizontal-padding" >FYI... we know spam sucks</div>
                 <div class="spacer-extra-small"></div>
                 <div class="hear-from-us-info horizontal-padding">that's why you'll only hear from us when your username is ready</div>
-                <div class="consent-message">
+                <spacer class="spacer-extra-small"></div>
+                <div class="consent-container">
+                    <input type="checkbox" id="consent-checkbox" required>
+                    <label for="consent-checkbox" class="consent-message">
+                        By submitting this form, you consent to our
+                        <a href="{% url 'thehouse:terms' %}" class="terms-link">Terms & Conditions</a> and
+                        <a href="{% url 'thehouse:privacy' %}" class="terms-link">Privacy Policy</a>
+                    </label>
+                </div>
                 <div class="form-button-container">
                     <button id="submit" class="form-input" type="submit">join the list</button>
-                    <div class="spacer-small"></div>
-                    By submitting this form, I consent to the <a href="url-to-terms-and-conditions" class="terms-link">Terms & Conditions</a>
-                    </div>
-                    <span id="submit-text">you've been added to the list.<br>we'll be waiting for you ...</span>
-                </div>
+                    <div class="spacer-extra-small"></div>
+                </div>          
             </form>
         </div>
     </div>

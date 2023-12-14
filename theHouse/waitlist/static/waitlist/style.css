@@ -274,13 +274,21 @@ p {
   padding-left: 20px;  /* adjust as needed */
   padding-right: 20px; /* adjust as needed */
 }
-
+.consent-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* Adjust the space between the checkbox and the message */
+}
 .consent-message {
   font-size: 10px; /* Small font size */
   color: #aeacac; /* Adjust color as needed */
   text-align: center;
   margin-bottom: 10px; /* Spacing before the button */
   font-family: Inter;
+  white-space: nowrap; /* Prevents the text from wrapping */
+  overflow: hidden; /* Keeps the text from overflowing */
+  text-overflow: ellipsis; /* Adds an ellipsis if the text is too long */
 }
 
 .consent-message a {
